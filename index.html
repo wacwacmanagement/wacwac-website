@@ -749,13 +749,13 @@
           <p class="en">Questions about programs or pricing — we typically reply within 2 business days. Start with a free consultation.</p>
           <div class="contact-meta">
             <div class="cmeta-row"><span class="cmeta-k">Base</span><span class="cmeta-v">Barcelona, España</span></div>
-            <div class="cmeta-row"><span class="cmeta-k">Email</span><span class="cmeta-v"><a href="mailto:wacwacespanol@gmail.com" style="color:var(--gold);">wacwacespanol@gmail.com</a></span></div>
+            <div class="cmeta-row"><span class="cmeta-k">Email</span><span class="cmeta-v"><a href="/cdn-cgi/l/email-protection#5b2c3a382c3a383e282b3a3534371b3c363a323775383436" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="b1c6d0d2c6d0d2d4c2c1d0dfdeddf1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></span></div>
             <div class="cmeta-row"><span class="cmeta-k">Hours</span><span class="cmeta-v">Mon – Fri, 10:00–18:00 CET</span></div>
           </div>
           <div class="contact-img" style="background:url('soccer.jpg') center top/cover;"></div>
         </div>
         <div class="fu">
-          <form class="contact-form" id="contact-form" novalidate>
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xreogpkg" method="POST">
             <div class="form-row">
               <div class="form-group">
                 <label class="ja">お名前 *</label><label class="en">Full Name *</label>
@@ -804,8 +804,23 @@
     <div class="wrap">
       <div class="footer-top">
         <div>
-          <div class="footer-logo">WACWAC</div>
+          <a href="#hero" style="display:inline-block; margin-bottom:0.75rem;">
+            <img src="logo.png" alt="WACWAC" style="height:44px; width:auto; display:block;" />
+          </a>
           <p class="footer-tagline">Barcelona-based Sports Study Abroad & Coordination</p>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/wacwac_co" target="_blank" rel="noopener"
+             style="display:inline-flex; align-items:center; gap:0.6rem; margin-top:1.1rem;
+                    font-family:var(--font-sans); font-size:0.72rem; letter-spacing:0.1em;
+                    color:var(--muted-dark); text-decoration:none; transition:color 0.2s;"
+             onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted-dark)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+            @wacwac_co
+          </a>
         </div>
         <div class="footer-nav-cols">
           <div class="footer-nav-col">
@@ -839,7 +854,7 @@
     </div>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
     // Language toggle
     document.querySelectorAll('.lang-btn').forEach(btn => {
       btn.addEventListener('click', () => {
@@ -870,13 +885,39 @@
       });
     });
 
-    // Contact form
-    // ▶ Formspree連携: <form action="https://formspree.io/f/YOUR_ID" method="POST"> に変更し、
-    //   e.preventDefault() を削除するだけで本番動作します。
-    document.getElementById('contact-form').addEventListener('submit', function(e) {
+    // Contact form → Formspree
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
       e.preventDefault();
-      document.getElementById('form-ok').style.display = 'block';
-      this.querySelectorAll('input,select,textarea,button').forEach(el => el.disabled = true);
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.disabled = true;
+      const jaSpan = btn.querySelector('span.ja');
+      const enSpan = btn.querySelector('span.en');
+      if (jaSpan) jaSpan.textContent = '送信中...';
+      if (enSpan) enSpan.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('form-ok').style.display = 'block';
+          form.reset();
+          btn.style.display = 'none';
+        } else {
+          alert('送信に失敗しました。\nwacwacespanol@gmail.com までご連絡ください。');
+          btn.disabled = false;
+          if (jaSpan) jaSpan.textContent = '送信する';
+          if (enSpan) enSpan.textContent = 'Send Message';
+        }
+      } catch(err) {
+        alert('送信に失敗しました。\nwacwacespanol@gmail.com までご連絡ください。');
+        btn.disabled = false;
+        if (jaSpan) jaSpan.textContent = '送信する';
+        if (enSpan) enSpan.textContent = 'Send Message';
+      }
     });
   </script>
 </body>
