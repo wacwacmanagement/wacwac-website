@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wacwac Management | スペイン・サッカー＆パデル留学</title>
+  <meta name="description" content="バルセロナ発。サッカー・パデル留学、ホームステイ、ビザサポート、通訳・コーディネートまで。スペインで夢を叶えるパートナー。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Noto+Serif+JP:wght@300;400;500;700&family=Noto+Sans+JP:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --black:   #080705;
+      --deep:    #0f0d08;
+      --dark:    #161410;
+      --surface: #1c1a12;
+      --card:    #221f14;
+      --white:   #faf8f3;
+      --off-white: #f2ede0;
+      --border-dark: rgba(212,178,106,0.15);
+      --border-light: rgba(0,0,0,0.1);
+      --gold:    #c9a84c;
+      --gold-lt: #e2c172;
+      --cream:   #f0e8d2;
+      --muted-dark:  rgba(240,232,210,0.6);
+      --muted-light: rgba(30,25,15,0.65);
+      --text-dark:   #1a1509;
+      --font-serif-en: 'Cormorant Garamond', Georgia, serif;
+      --font-serif-ja: 'Noto Serif JP', serif;
+      --font-sans-ja: 'Noto Sans JP', sans-serif;
+      --font-sans: 'Inter', sans-serif;
+      --nav-h: 68px;
+      --max: 1100px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--white);
+      color: var(--text-dark);
+      font-family: var(--font-serif-ja);
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    ::selection { background: var(--gold); color: var(--black); }
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--black); }
+    ::-webkit-scrollbar-thumb { background: var(--gold); }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    .wrap { width: min(100%, var(--max)); margin-inline: auto; padding-inline: clamp(1.25rem, 5vw, 2.5rem); }
+
+    /* LANG TOGGLE */
+    #lang-toggle {
+      position: fixed; top: 18px; right: clamp(1rem, 4vw, 2rem);
+      z-index: 300; display: flex;
+      border: 1px solid rgba(255,255,255,0.25); border-radius: 2px; overflow: hidden;
+    }
+    .lang-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--font-sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.12em; padding: 0.4rem 0.8rem;
+      color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s;
+    }
+    .lang-btn.active { background: var(--gold); color: var(--black); }
+
+    /* NAV */
+    #main-nav {
+      position: fixed; top: 0; left: 0; right: 0; height: var(--nav-h);
+      z-index: 200; display: flex; align-items: center;
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem);
+      transition: background 0.4s var(--ease), backdrop-filter 0.4s;
+    }
+    #main-nav.scrolled {
+      background: rgba(8,7,5,0.9); backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-dark);
+    }
+    .nav-logo {
+      font-family: var(--font-serif-en); font-size: 1.25rem; font-weight: 600;
+      letter-spacing: 0.14em; color: #fff;
+    }
+    .nav-logo img { transition: filter 0.4s; }
+    #main-nav.scrolled .nav-logo img { filter: brightness(0) invert(1); }
+    .nav-links { display: flex; gap: 2.5rem; margin-left: auto; margin-right: 6rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: rgba(255,255,255,0.72); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* HERO */
+    #hero {
+      position: relative; height: 100svh; min-height: 560px;
+      display: flex; align-items: flex-end; overflow: hidden;
+    }
+    .hero-img {
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.5) 55%, rgba(0,0,0,0.82) 100%),
+        url('hero.jpg') center/cover no-repeat;
+    }
+    .hero-img-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(180,120,20,0.06) 0%, transparent 60%);
+    }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding-bottom: clamp(3rem, 6vw, 5rem);
+      padding-inline: clamp(1.25rem, 5vw, 2.5rem); width: 100%;
+    }
+    .hero-eyebrow {
+      font-family: var(--font-sans); font-size: 0.62rem; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold);
+      margin-bottom: 1.25rem; display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--gold); }
+    .hero-h1 {
+      font-family: var(--font-serif-ja); font-weight: 300;
+      font-size: clamp(2rem, 5.5vw, 4rem); color: #fff;
+      line-height: 1.5; letter-spacing: 0.04em;
+      margin-bottom: 1.25rem; max-width: 700px;
+    }
+    .hero-h1 strong { font-weight: 700; color: var(--gold-lt); }
+    .hero-h1-en {
+      font-family: var(--font-serif-en); font-style: italic; font-weight: 300;
+      font-size: clamp(1.6rem, 4vw, 3rem); color: #fff; line-height: 1.3;
+      margin-bottom: 1.25rem; max-width: 680px;
+    }
+    .hero-sub {
+      font-size: 0.95rem; color: rgba(255,255,255,0.72);
+      font-weight: 300; max-width: 460px; line-height: 1.9; margin-bottom: 2.5rem;
+    }
+    .hero-cta {
+      display: inline-flex; align-items: center; gap: 1.25rem;
+      padding: 0.9rem 2rem; border: 1px solid var(--gold); color: var(--gold);
+      font-family: var(--font-sans); font-size: 0.68rem;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      position: relative; overflow: hidden; transition: color 0.3s;
+    }
+    .hero-cta::before {
+      content: ''; position: absolute; inset: 0; background: var(--gold);
+      transform: translateX(-101%); transition: transform 0.35s var(--ease);
+    }
+    .hero-cta:hover::before { transform: translateX(0); }
+    .hero-cta:hover { color: var(--black); }
+    .hero-cta span, .hero-cta-arrow { position: relative; z-index: 1; }
+
+    /* SECTIONS */
+    section { padding-block: clamp(4rem, 7vw, 6rem); }
+    .sec-label {
+      font-family: var(--font-sans); font-size: 0.6rem; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase; margin-bottom: 0.75rem;
+    }
+    .sec-label.gold { color: var(--gold); }
+    .sec-label.muted { color: var(--muted-light); }
+    .sec-rule { display: block; width: 40px; height: 1px; background: var(--gold); margin-bottom: 1.5rem; }
+    .sec-h2 {
+      font-family: var(--font-serif-ja); font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      font-weight: 400; line-height: 1.4; letter-spacing: 0.03em;
+    }
+    .sec-h2-en {
+      font-family: var(--font-serif-en); font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+      font-weight: 300; font-style: italic; line-height: 1.2;
+    }
+    .sec-lead { font-size: 0.92rem; font-weight: 300; line-height: 2; margin-top: 1.25rem; }
+    .sec-lead.dark { color: var(--muted-dark); }
+    .sec-lead.light { color: var(--muted-light); }
+
+    /* INTRO */
+    #intro { background: var(--white); }
+    .intro-inner {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem); align-items: center;
+    }
+    @media (max-width: 720px) { .intro-inner { grid-template-columns: 1fr; } }
+    .intro-img {
+      aspect-ratio: 16/10;
+      background: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&q=80') center/cover;
+      border: 1px solid var(--border-light);
+    }
+    .intro-img-caption {
+      margin-top: 0.6rem; font-family: var(--font-sans);
+      font-size: 0.65rem; letter-spacing: 0.12em; color: var(--muted-light); text-align: right;
+    }
+    .intro-feature-list { margin-top: 2rem; list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+    .intro-feature-list li {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      font-size: 0.88rem; color: var(--muted-light);
+    }
+    .intro-feature-list li::before {
+      content: ''; width: 5px; height: 5px; border-radius: 50%;
+      background: var(--gold); margin-top: 0.6em; flex-shrink: 0;
+    }
+
+    /* PROFILE */
+    #profile { background: var(--off-white); border-top: 1px solid var(--border-light); }
+    .profile-inner {
+      display: grid; grid-template-columns: 260px 1fr;
+      gap: clamp(2.5rem, 5vw, 5rem); align-items: start;
+    }
+    @media (max-width: 720px) { .profile-inner { grid-template-columns: 1fr; } }
+    .profile-photo-wrap { position: relative; }
+    .profile-photo {
+      aspect-ratio: 3/4;
+      background: linear-gradient(160deg,#ede8dc,#ddd5bf);
+      border: 1px solid var(--border-light);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 0.6rem;
+    }
+    .profile-photo svg { width: 36px; opacity: 0.3; }
+    .profile-photo-label {
+      font-family: var(--font-sans); font-size: 0.65rem;
+      letter-spacing: 0.18em; color: rgba(0,0,0,0.3);
+    }
+    .profile-name {
+      font-family: var(--font-serif-ja); font-size: 1.5rem; font-weight: 500;
+      letter-spacing: 0.1em; color: var(--text-dark); margin-top: 1.5rem;
+    }
+    .profile-name-en {
+      font-family: var(--font-serif-en); font-style: italic;
+      font-size: 0.95rem; color: var(--muted-light); margin-top: 0.2rem;
+    }
+    .profile-divider { width: 40px; height: 1px; background: var(--gold); margin: 1.25rem 0; }
+    .profile-body-text p {
+      font-size: 0.9rem; color: var(--muted-light); font-weight: 300; line-height: 2; margin-bottom: 1rem;
+    }
+    .profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.5rem; }
+    .profile-tag {
+      padding: 0.3rem 0.9rem; border: 1px solid rgba(0,0,0,0.15);
+      font-family: var(--font-sans); font-size: 0.62rem;
+      letter-spacing: 0.14em; color: var(--muted-light);
+    }
+
+    /* CONCEPT */
+    #concept { background: var(--dark); border-top: 1px solid var(--border-dark); }
+    .concept-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 5rem); align-items: center;
+    }
+    @media (max-width: 720px) { .concept-inner { grid-template-columns: 1fr; } }
+    .concept-text .sec-h2, .concept-text .sec-h2-en { color: var(--cream); }
+    .concept-img {
+      aspect-ratio: 16/11;
+      background: url('https://images.unsplash.com/photo-1539037116277-4db20889f2d4?w=900&q=80') center/cover;
+      border: 1px solid var(--border-dark); overflow: hidden;
+    }
+
+    /* SERVICES */
+    #services { background: var(--deep); border-top: 1px solid var(--border-dark); }
+    .services-header { margin-bottom: 3.5rem; }
+    .services-header .sec-h2, .services-header .sec-h2-en { color: var(--cream); }
+    .services-list { display: flex; flex-direction: column; }
+    .service-row {
+      display: grid; grid-template-columns: 1fr 220px; gap: 2rem; align-items: center;
+      padding: 2rem 0; border-bottom: 1px solid var(--border-dark);
+      transition: background 0.25s; cursor: default;
+    }
+    .service-row:first-child { border-top: 1px solid var(--border-dark); }
+    .service-row:hover { background: rgba(212,178,106,0.04); }
+    @media (max-width: 680px) { .service-row { grid-template-columns: 1fr; } }
+    .service-left { display: flex; gap: 2rem; align-items: flex-start; }
+    .service-num-lg {
+      font-family: var(--font-serif-en); font-size: 2.8rem; font-weight: 300;
+      color: rgba(201,168,76,0.2); line-height: 1; flex-shrink: 0; min-width: 56px;
+    }
+    .service-title {
+      font-family: var(--font-serif-ja); font-size: 1.1rem; font-weight: 500;
+      color: var(--cream); margin-bottom: 0.2rem; letter-spacing: 0.03em;
+    }
+    .service-title-en {
+      font-family: var(--font-serif-en); font-style: italic;
+      font-size: 0.82rem; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .service-desc {
+      font-size: 0.84rem; color: var(--muted-dark);
+      font-weight: 300; line-height: 1.85; max-width: 560px;
+    }
+    .service-thumb {
+      aspect-ratio: 4/3; overflow: hidden;
+      border: 1px solid var(--border-dark); flex-shrink: 0;
+    }
+    .service-thumb div { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s var(--ease); filter: brightness(0.82) saturate(0.85); }
+    .service-row:hover .service-thumb div { transform: scale(1.06); filter: brightness(0.95) saturate(1); }
+    @media (max-width: 680px) { .service-thumb { display: none; } }
+
+    /* FAQ */
+    #faq { background: var(--white); border-top: 1px solid var(--border-light); }
+    .faq-header { margin-bottom: 3rem; }
+    .faq-list { display: flex; flex-direction: column; max-width: 760px; }
+    .faq-item { border-bottom: 1px solid var(--border-light); }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 1.5rem;
+      padding: 1.4rem 0; font-family: var(--font-serif-ja); font-size: 0.97rem;
+      font-weight: 500; color: var(--text-dark); text-align: left; letter-spacing: 0.02em;
+    }
+    .faq-q:hover { color: var(--gold); }
+    .faq-icon {
+      width: 28px; height: 28px; border: 1px solid var(--border-light); border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      position: relative; transition: border-color 0.25s, background 0.25s;
+    }
+    .faq-icon::before, .faq-icon::after {
+      content: ''; position: absolute; background: currentColor; border-radius: 1px; transition: transform 0.3s var(--ease), opacity 0.3s;
+    }
+    .faq-icon::before { width: 10px; height: 1.5px; }
+    .faq-icon::after  { width: 1.5px; height: 10px; }
+    .faq-item.open .faq-icon { background: var(--gold); border-color: var(--gold); color: #fff; }
+    .faq-item.open .faq-icon::after { transform: rotate(90deg); opacity: 0; }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease); }
+    .faq-a-inner {
+      padding-bottom: 1.25rem; font-size: 0.88rem;
+      font-weight: 300; color: var(--muted-light); line-height: 2;
+    }
+    .faq-item.open .faq-a { max-height: 400px; }
+
+    /* CONTACT */
+    #contact { background: var(--off-white); border-top: 1px solid var(--border-light); }
+    .contact-inner {
+      display: grid; grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2.5rem, 5vw, 5rem);
+    }
+    @media (max-width: 720px) { .contact-inner { grid-template-columns: 1fr; } }
+    .contact-info .sec-h2 { color: var(--text-dark); }
+    .contact-info > p {
+      font-size: 0.88rem; color: var(--muted-light); font-weight: 300;
+      line-height: 2; margin-top: 1.25rem; margin-bottom: 2rem;
+    }
+    .contact-meta { display: flex; flex-direction: column; gap: 0.75rem; }
+    .cmeta-row { display: flex; gap: 1rem; font-size: 0.82rem; }
+    .cmeta-k {
+      font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--gold); min-width: 72px; padding-top: 0.1em;
+    }
+    .cmeta-v { color: var(--muted-light); }
+    .contact-img {
+      margin-top: 2.5rem; aspect-ratio: 16/9;
+      background: url('https://images.unsplash.com/photo-1543269865-cbf427effbad?w=900&q=80') center/cover;
+      border: 1px solid var(--border-light);
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 480px) { .form-row { grid-template-columns: 1fr; } }
+    .form-group { display: flex; flex-direction: column; gap: 0.35rem; }
+    .form-group label {
+      font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--muted-light);
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      background: #fff; border: 1px solid rgba(0,0,0,0.14); color: var(--text-dark);
+      font-family: var(--font-serif-ja); font-size: 0.9rem; padding: 0.8rem 1rem;
+      outline: none; transition: border-color 0.25s; -webkit-appearance: none; appearance: none; width: 100%;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold); }
+    .form-group input::placeholder, .form-group textarea::placeholder { color: rgba(0,0,0,0.2); }
+    .form-group textarea { resize: vertical; min-height: 130px; }
+    .form-submit {
+      padding: 0.9rem 2rem; background: var(--deep); border: none; color: var(--cream);
+      cursor: pointer; align-self: flex-start; font-family: var(--font-sans);
+      font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+      position: relative; overflow: hidden; transition: color 0.3s;
+    }
+    .form-submit::before {
+      content: ''; position: absolute; inset: 0; background: var(--gold);
+      transform: translateX(-101%); transition: transform 0.35s var(--ease);
+    }
+    .form-submit:hover::before { transform: translateX(0); }
+    .form-submit:hover { color: var(--black); }
+    .form-submit span { position: relative; z-index: 1; }
+    .form-note { font-size: 0.72rem; color: var(--muted-light); font-family: var(--font-sans); margin-top: 0.5rem; }
+    #form-ok {
+      display: none; padding: 1rem 1.25rem;
+      border: 1px solid var(--gold); background: rgba(201,168,76,0.07);
+      color: var(--text-dark); font-size: 0.88rem;
+    }
+
+    /* FOOTER */
+    footer { background: var(--black); border-top: 1px solid var(--border-dark); padding-block: 2.5rem 3rem; }
+    .footer-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-dark); margin-bottom: 2rem;
+    }
+    .footer-logo { font-family: var(--font-serif-en); font-size: 1.2rem; font-weight: 600; letter-spacing: 0.14em; color: var(--gold); }
+    .footer-logo em { font-style: normal; font-weight: 300; opacity: 0.7; }
+    .footer-tagline { font-family: var(--font-sans); font-size: 0.62rem; letter-spacing: 0.12em; color: var(--muted-dark); margin-top: 0.4rem; }
+    .footer-nav-cols { display: flex; gap: 4rem; flex-wrap: wrap; }
+    .footer-nav-col h4 { font-family: var(--font-sans); font-size: 0.6rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.75rem; }
+    .footer-nav-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-nav-col a { font-family: var(--font-sans); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted-dark); transition: color 0.2s; }
+    .footer-nav-col a:hover { color: var(--gold); }
+    .footer-bottom { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-family: var(--font-sans); font-size: 0.62rem; letter-spacing: 0.1em; color: rgba(240,232,210,0.3); }
+    .footer-legal { display: flex; gap: 1.5rem; }
+    .footer-legal a { font-family: var(--font-sans); font-size: 0.62rem; letter-spacing: 0.08em; color: rgba(240,232,210,0.3); transition: color 0.2s; }
+    .footer-legal a:hover { color: var(--muted-dark); }
+
+    /* ANIMATIONS */
+    .fu { opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
+    .fu.vis { opacity: 1; transform: none; }
+    .fu:nth-child(2) { transition-delay: 0.1s; }
+    .fu:nth-child(3) { transition-delay: 0.2s; }
+    .hero-content > * { opacity: 0; transform: translateY(20px); animation: hIn 0.8s var(--ease) forwards; }
+    .hero-content > :nth-child(1) { animation-delay: 0.3s; }
+    .hero-content > :nth-child(2) { animation-delay: 0.5s; }
+    .hero-content > :nth-child(3) { animation-delay: 0.65s; }
+    .hero-content > :nth-child(4) { animation-delay: 0.8s; }
+    @keyframes hIn { to { opacity: 1; transform: none; } }
+
+    /* LANG CLASSES */
+    .en { display: none; }
+    body.lang-en .ja { display: none; }
+    body.lang-en .en { display: revert; }
+  </style>
+</head>
+<body>
+
+  <div id="lang-toggle">
+    <button class="lang-btn active" data-lang="ja">JP</button>
+    <button class="lang-btn" data-lang="en">EN</button>
+  </div>
+
+  <nav id="main-nav">
+    <a href="#hero" class="nav-logo">
+      <img src="logo.png" alt="Wacwac Management" style="height:36px; width:auto; display:block;" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services" class="ja">サービス</a><a href="#services" class="en">Services</a></li>
+      <li><a href="#profile" class="ja">代表紹介</a><a href="#profile" class="en">About</a></li>
+      <li><a href="#faq" class="ja">よくある質問</a><a href="#faq" class="en">FAQ</a></li>
+      <li><a href="#contact" class="ja">お問い合わせ</a><a href="#contact" class="en">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-img"></div>
+    <div class="hero-img-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Barcelona, España</p>
+      <h1 class="hero-h1 ja">スペインで、<strong>あなたの可能性</strong>を<br />広げてみませんか。</h1>
+      <h1 class="hero-h1-en en">Expand your horizons<br /><em>in Spain.</em></h1>
+      <p class="hero-sub ja">サッカーやパデルに深く精通するバルセロナ在住の日本人コーディネーターが、スポーツ留学から生活サポートまで、丁寧にご案内します。</p>
+      <p class="hero-sub en">A Japanese coordinator based in Barcelona — guiding you through sports study abroad, daily life, and everything in between.</p>
+      <a href="#contact" class="hero-cta">
+        <span class="ja">無料相談はこちら</span>
+        <span class="en">Free Consultation</span>
+        <span class="hero-cta-arrow">→</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section id="intro">
+    <div class="wrap">
+      <div class="intro-inner">
+        <div class="fu">
+          <p class="sec-label muted">About</p>
+          <span class="sec-rule"></span>
+          <h2 class="sec-h2 ja">現地在住の日本人だから<br />できる、きめ細かなご案内。</h2>
+          <h2 class="sec-h2-en en">Local knowledge.<br />Japanese care.</h2>
+          <p class="sec-lead light ja">バルセロナに暮らす日本人コーディネーターとして、現地ならではのネットワークと生の情報をもとに、お客様一人ひとりに最適なプランをご提案します。旅行会社では得られないリアルなサポートをぜひご体感ください。</p>
+          <p class="sec-lead light en">As a Japanese resident in Barcelona, we offer real-time local insights and personal networks that no travel agency can replicate — tailored individually to each client.</p>
+          <ul class="intro-feature-list ja">
+            <li>バルセロナ在住5年以上の深い現地知識</li>
+            <li>日本語・英語・スペイン語の3言語対応</li>
+            <li>元商社マンによるプロフェッショナルなサポート</li>
+            <li>渡航前〜帰国後まで一貫したフォロー体制</li>
+          </ul>
+          <ul class="intro-feature-list en">
+            <li>5+ years of Barcelona residency and local expertise</li>
+            <li>Trilingual: Japanese, English & Spanish</li>
+            <li>Professional background in international trading</li>
+            <li>Full support from pre-departure through return</li>
+          </ul>
+        </div>
+        <div class="fu">
+          <div class="intro-img" style="background:url('hero.jpg') center/cover;"></div>
+          <p class="intro-img-caption">Barcelona, España</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROFILE -->
+  <section id="profile">
+    <div class="wrap">
+      <div class="profile-inner">
+        <div class="fu" style="display:flex; align-items:flex-start; justify-content:center;">
+          <div style="width:220px; flex-shrink:0;">
+            <img src="profile.jpg" alt="代表者" style="width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center top; border:1px solid var(--border-light); display:block;" />
+          </div>
+        </div>
+        <div class="profile-body-text fu">
+          <p class="sec-label muted">Founder</p>
+          <span class="sec-rule"></span>
+          <h2 class="sec-h2 ja">代表紹介</h2>
+          <h2 class="sec-h2-en en">About the Founder</h2>
+          <div class="profile-name ja">代表・コーディネーター</div>
+          <div class="profile-name en">Founder & Coordinator</div>
+          <div class="profile-name-en">Wacwac Management</div>
+          <div class="profile-divider"></div>
+          <p class="ja">大手商社での国際ビジネス経験を経て、スペイン・バルセロナに移住。選手権強豪校でのサッカー経験を持ち、バルセロナのパデル事情に深く精通するパデル愛好家として、日本人がスペインで安心して活動できる環境づくりに取り組んでいます。</p>
+          <p class="en">After a career in international business at a major Japanese trading company, I relocated to Barcelona. With a competitive soccer background from a top high school program, and as a padel enthusiast deeply versed in Barcelona's padel scene, I help Japanese people thrive in Spain with confidence.</p>
+          <p class="ja">留学コーディネートからビジネス通訳まで、スペインと日本をつなぐ架け橋として、一人ひとりのニーズに寄り添ったサービスをご提供しています。</p>
+          <p class="en">From study abroad coordination to business interpretation — bridging Spain and Japan with genuinely personal service for every client.</p>
+          <div class="profile-tags">
+            <span class="profile-tag ja">元商社勤務</span>
+            <span class="profile-tag en">Former Trading Co.</span>
+            <span class="profile-tag ja">パデル愛好家（バルセロナのパデル事情に精通）</span>
+            <span class="profile-tag en">Padel Enthusiast (BCN Expert)</span>
+            <span class="profile-tag">Barcelona 在住</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONCEPT (dark) -->
+  <section id="concept">
+    <div class="wrap">
+      <div class="concept-inner">
+        <div class="concept-text fu">
+          <p class="sec-label gold">Our Mission</p>
+          <span class="sec-rule"></span>
+          <h2 class="sec-h2 ja">スポーツを通じて、<br />スペインと日本を<br />もっと近くに。</h2>
+          <h2 class="sec-h2-en en">Bringing Spain &<br />Japan closer,<br />through sport.</h2>
+          <p class="sec-lead dark ja">単なる「手配」ではなく、スペインでの体験そのものをより深く、より安全に、より豊かにするために——Wacwac Management は存在します。バルセロナという街に根ざし、日本人の目線で、本物のスペインをお届けします。</p>
+          <p class="sec-lead dark en">We exist not merely to arrange logistics, but to make every experience in Spain deeper, safer, and more meaningful — rooted in Barcelona, seen through Japanese eyes.</p>
+        </div>
+        <div class="fu">
+          <div class="concept-img" style="background:url('soccer.jpg') center/cover;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="wrap">
+      <div class="services-header fu">
+        <p class="sec-label gold">Services</p>
+        <span class="sec-rule"></span>
+        <h2 class="sec-h2 ja">サービスプラン</h2>
+        <h2 class="sec-h2-en en">What We Offer</h2>
+        <p class="sec-lead dark ja" style="max-width:560px;">バルセロナを拠点に、スポーツ留学から生活サポート、ビジネスコーディネートまで幅広くご対応します。</p>
+        <p class="sec-lead dark en" style="max-width:560px;">From Barcelona-based sports programs to daily life support and business coordination — comprehensive service.</p>
+      </div>
+      <div class="services-list">
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">01</span>
+            <div>
+              <div class="service-title ja">サッカー留学</div>
+              <div class="service-title en">Soccer Study Abroad</div>
+              <div class="service-title-en">Football Academy Program</div>
+              <p class="service-desc ja">スペインの強豪クラブやアカデミーへのトライアル同行・コーチング手配。年齢・レベルに合わせた短期〜長期プランに対応します。<br /><strong style="color:var(--gold-lt);">サッカー遠征にも対応。実績あり。</strong></p>
+              <p class="service-desc en">Trial accompaniment and coaching at top Spanish clubs. Short to long-term programs tailored to age and level. <strong style="color:var(--gold-lt);">Soccer tour groups also welcome — proven track record.</strong></p>
+              <!-- 遠征写真2枚 -->
+              <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.5rem; margin-top:1.25rem;">
+                <img src="soccer.jpg" alt="サッカー遠征" style="width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center top; border:1px solid var(--border-dark);" />
+                <img src="soccer2.jpg" alt="サッカー遠征" style="width:100%; aspect-ratio:4/3; object-fit:cover; object-position:center top; border:1px solid var(--border-dark);" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">02</span>
+            <div>
+              <div class="service-title ja">パデル留学</div>
+              <div class="service-title en">Padel Academy</div>
+              <div class="service-title-en">Padel Training Program</div>
+              <p class="service-desc ja">世界最高峰のパデル文化が根付くスペインで、プロコーチによる集中トレーニング。現地のパデル事情を深く知るコーディネーターが、最適なアカデミーをご紹介します。</p>
+              <p class="service-desc en">Intensive training with professional coaches in the world's padel capital — matched to your level by a coordinator with deep knowledge of Barcelona's local padel scene.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('padel.jpg') center/cover; height:100%;"></div></div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">03</span>
+            <div>
+              <div class="service-title ja">ホームステイ手配</div>
+              <div class="service-title en">Homestay Arrangement</div>
+              <div class="service-title-en">Host Family Placement</div>
+              <p class="service-desc ja">親切なスペイン語ネイティブ家庭をご紹介。安心・安全な滞在環境と、スペイン語・文化への自然な没入体験をご提供します。</p>
+              <p class="service-desc en">Warm Spanish-speaking host families for a safe, comfortable stay with natural language and cultural immersion.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('homestay.jpg') center/cover; height:100%;"></div></div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">04</span>
+            <div>
+              <div class="service-title ja">ビザ・入国サポート</div>
+              <div class="service-title en">Visa & Entry Support</div>
+              <div class="service-title-en">Immigration Assistance</div>
+              <p class="service-desc ja">学生ビザから労働ビザなど各種ビザに対応。必要書類の準備から申請手続きまで、複雑な手続きをわかりやすくサポートします。</p>
+              <p class="service-desc en">From student visas to work permits — full support across all visa types, from document preparation to submission.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('visa2.jpg') center/cover; height:100%;"></div></div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">05</span>
+            <div>
+              <div class="service-title ja">観光・現地案内</div>
+              <div class="service-title en">Tourism & Local Guide</div>
+              <div class="service-title-en">Barcelona Experience</div>
+              <p class="service-desc ja">バルセロナ在住者だからこそ知る、穴場スポットやグルメ情報をご案内。ガイドブックには載っていない"本物のバルセロナ"をお届けします。</p>
+              <p class="service-desc en">Hidden gems, local restaurants, and authentic experiences — the Barcelona only a resident knows, beyond any guidebook.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('barcelona.jpg') center/cover; height:100%;"></div></div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">06</span>
+            <div>
+              <div class="service-title ja">スポーツ・ウェディング撮影</div>
+              <div class="service-title en">Photography</div>
+              <div class="service-title-en">Sports & Wedding Photography</div>
+              <p class="service-desc ja">試合・練習の記録撮影から、バルセロナを舞台にした結婚式・前撮り撮影まで。スペインの光と空気感を切り取る本格フォトサービス。</p>
+              <p class="service-desc en">Match documentation to wedding shoots set against Barcelona's stunning backdrop — capturing the light and spirit of Spain.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('wedding.jpg') center/cover; height:100%;"></div></div>
+        </div>
+
+        <div class="service-row fu">
+          <div class="service-left">
+            <span class="service-num-lg">07</span>
+            <div>
+              <div class="service-title ja">通訳・ビジネスコーディネート</div>
+              <div class="service-title en">Interpretation & Business</div>
+              <div class="service-title-en">Business Coordination</div>
+              <p class="service-desc ja">商談・視察・交渉の場での通訳帯同、スペイン企業とのアポイント取得代行。元商社マンの経験を活かしたビジネスサポートをご提供します。</p>
+              <p class="service-desc en">On-site interpretation for meetings and negotiations, plus appointment setting with Spanish companies — backed by a trading company background.</p>
+            </div>
+          </div>
+          <div class="service-thumb"><div style="background:url('biz.jpg') center top/cover; height:100%;"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="faq-header fu">
+        <p class="sec-label muted">FAQ</p>
+        <span class="sec-rule"></span>
+        <h2 class="sec-h2 ja">よくある質問</h2>
+        <h2 class="sec-h2-en en">Frequently Asked Questions</h2>
+      </div>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">スペイン語が全くできなくても大丈夫ですか？</span>
+            <span class="en">Is it okay if I speak no Spanish at all?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">はい、問題ありません。日本語でのコミュニケーションを基本としており、現地でのやり取りは私たちが通訳・代行いたします。スペイン語ゼロからでも安心してご参加いただけます。</span>
+            <span class="en">Absolutely. We communicate primarily in Japanese and handle all local interactions on your behalf. Zero Spanish is no barrier.</span>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">小学生・中学生でも参加できますか？</span>
+            <span class="en">Can elementary or middle school students participate?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">はい、年齢に合わせたプランをご用意しています。保護者同伴の場合はもちろん、単独参加のお子様についても安全を最優先にサポートいたします。</span>
+            <span class="en">Yes, we have programs suitable for all ages. Whether accompanied or solo, child safety is our top priority throughout.</span>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">渡航前のサポートはありますか？</span>
+            <span class="en">Is there support before departure?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">はい。オンライン相談から始まり、必要書類の準備、フライト・保険のアドバイス、出発前オリエンテーションまでしっかりサポートします。</span>
+            <span class="en">Yes — from online consultations to document prep, flight and insurance advice, and a pre-departure orientation.</span>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">料金はどのくらいかかりますか？</span>
+            <span class="en">How much does it cost?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">プランの内容・期間・人数により異なります。お客様のご希望に合わせたお見積もりを無料でご提示いたします。まずはお気軽にご相談ください。</span>
+            <span class="en">Fees vary by program, duration, and group size. Contact us for a free, no-obligation quote tailored to your needs.</span>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">パデル留学は初心者でも参加できますか？</span>
+            <span class="en">Can beginners join the padel program?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">もちろんです。完全初心者から上級者まで、レベルに応じたコーチ・アカデミーをご紹介します。「スペインでパデルを始めたい」という方も大歓迎です。</span>
+            <span class="en">Absolutely. We match coaches and academies to your level — from complete beginners to advanced players.</span>
+          </div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">緊急時の対応はどうなっていますか？</span>
+            <span class="en">What happens in an emergency?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">現地コーディネーターが常に連絡を取れる体制を整えています。体調不良・紛失・トラブルなど、滞在中の緊急事態にも迅速に対応いたします。</span>
+            <span class="en">Our local coordinator is always reachable. From illness to lost documents, we respond promptly to any emergency during your stay.</span>
+          </div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-inner">
+        <div class="fu">
+          <p class="sec-label muted">Contact</p>
+          <span class="sec-rule"></span>
+          <h2 class="sec-h2 ja">お問い合わせ・<br />ご相談はこちら</h2>
+          <h2 class="sec-h2-en en">Get in Touch</h2>
+          <p class="ja">サービスへのご質問や留学プランのご相談は、お気軽にどうぞ。通常2営業日以内にご返信いたします。</p>
+          <p class="en">Questions about programs or pricing — we typically reply within 2 business days. Start with a free consultation.</p>
+          <div class="contact-meta">
+            <div class="cmeta-row"><span class="cmeta-k">Base</span><span class="cmeta-v">Barcelona, España</span></div>
+            <div class="cmeta-row"><span class="cmeta-k">Email</span><span class="cmeta-v"><a href="/cdn-cgi/l/email-protection#5b2c3a382c3a383e282b3a3534371b3c363a323775383436" style="color:var(--gold);"><span class="__cf_email__" data-cfemail="b1c6d0d2c6d0d2d4c2c1d0dfdeddf1d6dcd0d8dd9fd2dedc">[email&#160;protected]</span></a></span></div>
+            <div class="cmeta-row"><span class="cmeta-k">Hours</span><span class="cmeta-v">Mon – Fri, 10:00–18:00 CET</span></div>
+          </div>
+          <div class="contact-img" style="background:url('contact2.jpg') center/cover;"></div>
+        </div>
+        <div class="fu">
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/xreogpkg" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label class="ja">お名前 *</label><label class="en">Full Name *</label>
+                <input type="text" name="name" required placeholder="山田 太郎" />
+              </div>
+              <div class="form-group">
+                <label class="ja">メールアドレス *</label><label class="en">Email *</label>
+                <input type="email" name="email" required placeholder="email@example.com" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="ja">ご興味のあるサービス</label><label class="en">Service of Interest</label>
+              <select name="service">
+                <option value="">-- 選択 / Select --</option>
+                <option value="soccer">サッカー留学 / Soccer</option>
+                <option value="padel">パデル留学 / Padel</option>
+                <option value="homestay">ホームステイ / Homestay</option>
+                <option value="visa">ビザサポート / Visa</option>
+                <option value="tour">観光案内 / Tourism</option>
+                <option value="photo">撮影 / Photography</option>
+                <option value="biz">ビジネス / Business</option>
+                <option value="other">その他 / Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="ja">お問い合わせ内容 *</label><label class="en">Message *</label>
+              <textarea name="message" required placeholder="ご相談内容をお聞かせください…"></textarea>
+            </div>
+            <div id="form-ok">
+              <span class="ja">✓ お問い合わせありがとうございます。2営業日以内にご返信いたします。</span>
+              <span class="en">✓ Thank you! We'll reply within 2 business days.</span>
+            </div>
+            <button type="submit" class="form-submit">
+              <span class="ja">送信する</span><span class="en">Send Message</span>
+            </button>
+            <p class="form-note ja">※ ご入力いただいた情報はお問い合わせ対応のみに使用します。</p>
+            <p class="form-note en">Your information is used solely for responding to your inquiry.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-top">
+        <div>
+          <a href="#hero" style="display:inline-block; margin-bottom:0.75rem;">
+            <img src="logo.png" alt="Wacwac Management" style="height:44px; width:auto; display:block;" />
+          </a>
+          <p class="footer-tagline">Wacwac Management — Barcelona-based Sports Study Abroad & Coordination</p>
+          <!-- Instagram -->
+          <a href="https://www.instagram.com/wacwac_co" target="_blank" rel="noopener"
+             style="display:inline-flex; align-items:center; gap:0.6rem; margin-top:1.1rem;
+                    font-family:var(--font-sans); font-size:0.72rem; letter-spacing:0.1em;
+                    color:var(--muted-dark); text-decoration:none; transition:color 0.2s;"
+             onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--muted-dark)'">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <circle cx="12" cy="12" r="4"/>
+              <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+            </svg>
+            @wacwac_co
+          </a>
+        </div>
+        <div class="footer-nav-cols">
+          <div class="footer-nav-col">
+            <h4 class="ja">サービス</h4><h4 class="en">Services</h4>
+            <ul>
+              <li><a href="#services" class="ja">サッカー留学</a><a href="#services" class="en">Soccer</a></li>
+              <li><a href="#services" class="ja">パデル留学</a><a href="#services" class="en">Padel</a></li>
+              <li><a href="#services" class="ja">ホームステイ</a><a href="#services" class="en">Homestay</a></li>
+              <li><a href="#services" class="ja">ビザサポート</a><a href="#services" class="en">Visa</a></li>
+              <li><a href="#services" class="ja">撮影</a><a href="#services" class="en">Photography</a></li>
+              <li><a href="#services" class="ja">ビジネス</a><a href="#services" class="en">Business</a></li>
+            </ul>
+          </div>
+          <div class="footer-nav-col">
+            <h4 class="ja">会社情報</h4><h4 class="en">Company</h4>
+            <ul>
+              <li><a href="#profile" class="ja">代表紹介</a><a href="#profile" class="en">About</a></li>
+              <li><a href="#faq" class="ja">よくある質問</a><a href="#faq" class="en">FAQ</a></li>
+              <li><a href="#contact" class="ja">お問い合わせ</a><a href="#contact" class="en">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">© 2025 Wacwac Management. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="#" class="ja">プライバシーポリシー</a><a href="#" class="en">Privacy Policy</a>
+          <a href="#" class="ja">利用規約</a><a href="#" class="en">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    // Language toggle
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.body.classList.toggle('lang-en', lang === 'en');
+        document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b === btn));
+        document.documentElement.lang = lang;
+      });
+    });
+
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60), { passive: true });
+
+    // Fade-up
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); io.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fu').forEach(el => io.observe(el));
+
+    // FAQ
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    // Contact form → Formspree
+    document.getElementById('contact-form').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const btn = form.querySelector('.form-submit');
+      btn.disabled = true;
+      const jaSpan = btn.querySelector('span.ja');
+      const enSpan = btn.querySelector('span.en');
+      if (jaSpan) jaSpan.textContent = '送信中...';
+      if (enSpan) enSpan.textContent = 'Sending...';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          document.getElementById('form-ok').style.display = 'block';
+          form.reset();
+          btn.style.display = 'none';
+        } else {
+          alert('送信に失敗しました。\nwacwacespanol@gmail.com までご連絡ください。');
+          btn.disabled = false;
+          if (jaSpan) jaSpan.textContent = '送信する';
+          if (enSpan) enSpan.textContent = 'Send Message';
+        }
+      } catch(err) {
+        alert('送信に失敗しました。\nwacwacespanol@gmail.com までご連絡ください。');
+        btn.disabled = false;
+        if (jaSpan) jaSpan.textContent = '送信する';
+        if (enSpan) enSpan.textContent = 'Send Message';
+      }
+    });
+  </script>
+</body>
+</html>
