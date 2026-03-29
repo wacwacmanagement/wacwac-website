@@ -284,6 +284,15 @@
     .service-thumb div { width: 100%; height: 100%; background-size: cover; background-position: center; transition: transform 0.5s var(--ease); filter: brightness(0.82) saturate(0.85); }
     .service-row:hover .service-thumb div { transform: scale(1.06); filter: brightness(0.95) saturate(1); }
     @media (max-width: 680px) { .service-thumb { display: none; } }
+    @media (max-width: 680px) {
+      .service-row { display: flex; flex-direction: column; }
+      .service-thumb {
+        display: block !important;
+        width: 100%; aspect-ratio: 16/9;
+        margin-top: 1rem; flex-shrink: 0;
+      }
+      .service-thumb div { height: 100%; }
+    }
 
     /* FAQ */
     #faq { background: var(--white); border-top: 1px solid var(--border-light); }
