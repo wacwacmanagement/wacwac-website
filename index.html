@@ -407,6 +407,7 @@
     .footer-legal a:hover { color: var(--muted-dark); }
 
     /* ANIMATIONS */
+    @media (max-width: 680px) { .plans-grid { grid-template-columns: 1fr !important; } }
     .fu { opacity: 0; transform: translateY(28px); transition: opacity 0.65s var(--ease), transform 0.65s var(--ease); }
     .fu.vis { opacity: 1; transform: none; }
     .fu:nth-child(2) { transition-delay: 0.1s; }
@@ -437,6 +438,7 @@
     </a>
     <ul class="nav-links">
       <li><a href="#services" class="ja">サービス</a><a href="#services" class="en">Services</a></li>
+      <li><a href="#plans" class="ja">プラン</a><a href="#plans" class="en">Plans</a></li>
       <li><a href="#profile" class="ja">代表紹介</a><a href="#profile" class="en">About</a></li>
       <li><a href="#faq" class="ja">よくある質問</a><a href="#faq" class="en">FAQ</a></li>
       <li><a href="#contact" class="ja">お問い合わせ</a><a href="#contact" class="en">Contact</a></li>
@@ -449,10 +451,10 @@
     <div class="hero-img-overlay"></div>
     <div class="hero-content">
       <p class="hero-eyebrow">Barcelona, España</p>
-      <h1 class="hero-h1 ja">スペインで、<strong>あなたの可能性</strong>を<br />広げてみませんか。</h1>
-      <h1 class="hero-h1-en en">Expand your horizons<br /><em>in Spain.</em></h1>
-      <p class="hero-sub ja">サッカーやパデルに深く精通するバルセロナ在住の日本人コーディネーターが、スポーツ留学から生活サポートまで、丁寧にご案内します。</p>
-      <p class="hero-sub en">A Japanese coordinator based in Barcelona — guiding you through sports study abroad, daily life, and everything in between.</p>
+      <h1 class="hero-h1 ja">スペインで<strong>あなたの可能性</strong>を<br />さらに広げます。<br />本場で挑戦しませんか？</h1>
+      <h1 class="hero-h1-en en">Expand your potential<br /><em>in Spain.</em></h1>
+      <p class="hero-sub ja">たくさんの魅力を持つバルセロナから、サッカー、パデル留学という選択肢をご提案します。プロアスリート選手を目指す人も、レベルを強化したい人も、現地の留学の体験を通して得てもらいたいものがたくさんあります。</p>
+      <p class="hero-sub en">From Barcelona, we offer soccer and padel study abroad programs for aspiring athletes and those looking to level up — with countless experiences waiting for you in Spain.</p>
       <a href="#contact" class="hero-cta">
         <span class="ja">無料相談はこちら</span>
         <span class="en">Free Consultation</span>
@@ -466,24 +468,18 @@
     <div class="wrap">
       <div class="intro-inner">
         <div class="fu">
-          <p class="sec-label muted">About</p>
+          <p class="sec-label muted">大切にしていること</p>
           <span class="sec-rule"></span>
-          <h2 class="sec-h2 ja">現地在住の日本人だから<br />できる、きめ細かなご案内。</h2>
-          <h2 class="sec-h2-en en">Local knowledge.<br />Japanese care.</h2>
-          <p class="sec-lead light ja">バルセロナに暮らす日本人コーディネーターとして、現地ならではのネットワークと生の情報をもとに、お客様一人ひとりに最適なプランをご提案します。旅行会社では得られないリアルなサポートをぜひご体感ください。</p>
-          <p class="sec-lead light en">As a Japanese resident in Barcelona, we offer real-time local insights and personal networks that no travel agency can replicate — tailored individually to each client.</p>
-          <ul class="intro-feature-list ja">
-            <li>バルセロナ在住5年以上の深い現地知識</li>
-            <li>日本語・英語・スペイン語の3言語対応</li>
-            <li>元商社マンによるプロフェッショナルなサポート</li>
-            <li>渡航前〜帰国後まで一貫したフォロー体制</li>
-          </ul>
-          <ul class="intro-feature-list en">
-            <li>5+ years of Barcelona residency and local expertise</li>
-            <li>Trilingual: Japanese, English & Spanish</li>
-            <li>Professional background in international trading</li>
-            <li>Full support from pre-departure through return</li>
-          </ul>
+          <h2 class="sec-h2 ja">現地でのきめ細やかな<br />サポート体制。</h2>
+          <h2 class="sec-h2-en en">Personal Support,<br />On the Ground.</h2>
+          <p class="sec-lead light ja">現地に責任者がいますので、日本語対応で安心して滞在をスタートすることができます。時期や期間を含めて柔軟にサポートしておりますので、お客さまのご希望に寄り添った滞在が可能です。</p>
+          <p class="sec-lead light en">With a dedicated coordinator on the ground, you can start your stay with confidence in Japanese. We offer flexible support tailored to your timing and duration.</p>
+          <h2 class="sec-h2 ja" style="margin-top:2rem;">環境にこだわる。</h2>
+          <h2 class="sec-h2-en en" style="margin-top:2rem;">Environment Matters.</h2>
+          <p class="sec-lead light ja">スペイン語は世界でも最も重要度のある言語であり、話者人口は4億人を超えると言われています。アメリカ合衆国でもヒスパニックを中心に使用され、第二言語として非常に学ぶ価値のある言語です。その本家であるスペインで語学を学びながら、あなたの可能性をさらに広げます。</p>
+          <p class="sec-lead light en">Spanish is one of the world's most important languages, spoken by over 400 million people. Learning it in Spain — its homeland — opens doors across the Americas and beyond.</p>
+          <p class="sec-lead light ja" style="margin-top:1rem;">人生を変える方法は3つあると言われています。付き合う人を変える、仕事を変える、（住む）環境を変える。海外での体験は短期・長期問わず将来の記憶に必ず残り、刺激が間違いなくあります。スポーツ大国のスペインで語学はもちろんのこと、サッカーやパデルといった国民的なスポーツで上を目指す環境を用意しております。異国の地での体験はその後の人生に間違いなくポジティブな影響を与えます。</p>
+          <p class="sec-lead light en">They say there are three ways to change your life: change the people around you, change your work, or change your environment. An experience abroad — short or long — always stays with you. We provide an environment in Spain to pursue sport and language together.</p>
         </div>
         <div class="fu">
           <div class="intro-img" style="background:url('hero.jpg') center/cover;"></div>
@@ -507,21 +503,19 @@
           <span class="sec-rule"></span>
           <h2 class="sec-h2 ja">代表紹介</h2>
           <h2 class="sec-h2-en en">About the Founder</h2>
-          <div class="profile-name ja">代表・コーディネーター</div>
-          <div class="profile-name en">Founder & Coordinator</div>
+          <div class="profile-name ja">Wacwac代表／フォトグラファー</div>
+          <div class="profile-name en">Founder & Photographer</div>
           <div class="profile-name-en">Wacwac Management</div>
           <div class="profile-divider"></div>
-          <p class="ja">大手商社での国際ビジネス経験を経て、スペイン・バルセロナに移住。選手権強豪校でのサッカー経験を持ち、バルセロナのパデル事情に深く精通するパデル愛好家として、日本人がスペインで安心して活動できる環境づくりに取り組んでいます。</p>
-          <p class="en">After a career in international business at a major Japanese trading company, I relocated to Barcelona. With a competitive soccer background from a top high school program, and as a padel enthusiast deeply versed in Barcelona's padel scene, I help Japanese people thrive in Spain with confidence.</p>
-          <p class="ja">留学コーディネートからビジネス通訳まで、スペインと日本をつなぐ架け橋として、一人ひとりのニーズに寄り添ったサービスをご提供しています。</p>
-          <p class="en">From study abroad coordination to business interpretation — bridging Spain and Japan with genuinely personal service for every client.</p>
-          <div class="profile-tags">
-            <span class="profile-tag ja">元商社勤務</span>
-            <span class="profile-tag en">Former Trading Co.</span>
-            <span class="profile-tag ja">パデル愛好家（バルセロナのパデル事情に精通）</span>
-            <span class="profile-tag en">Padel Enthusiast (BCN Expert)</span>
-            <span class="profile-tag">Barcelona 在住</span>
-          </div>
+          <p class="ja">中京大中京サッカー部出身、スペイン・バルセロナ在住。大学時代にスペインのサラゴサへ語学留学をし、その後観光や出張で何度かスペインに訪れており、現地には詳しいほうです。</p>
+          <p class="en">From the Chukyo University Chukyo soccer club, now based in Barcelona, Spain. Studied Spanish in Zaragoza during university, and has since visited Spain numerous times for tourism and business.</p>
+          <p class="ja">新卒で総合商社の物流ビジネスに従事、その後メキシコ駐在。その後バルセロナ出身のスペイン人と日本でスペイン語圏向けの訪日インバウンド事業のスタートアップに参画。新型コロナウイルスの影響で日本国内観光が一時ストップ、それを機に復興の速かったスペインへ飛び出す。</p>
+          <p class="en">After joining a trading company's logistics division and working in Mexico, co-founded an inbound tourism startup in Japan targeting Spanish speakers. When COVID halted domestic tourism, seized the opportunity to move to Spain, which recovered quickly.</p>
+          <p class="ja">現在はバルセロナでスポーツ留学事業を運営しています。スペインでサッカーの次に競技人口の多いパデルに熱狂中！サッカーやパデルを始め各種、留学手続きご相談ください。遠征コーディネートや国際大会等での通訳にも従事。</p>
+          <p class="en">Currently running a sports study abroad business in Barcelona. Passionate about padel — Spain's second most popular sport after soccer. Available for study abroad consultation, expedition coordination, and international tournament interpretation.</p>
+          <p class="ja">フォトグラファーでもありますので家族写真やポートレート撮影も行っております。バルセロナ観光やグルメツアーを随時やっております。2019年よりコロナ禍はオンライン開催を含め、毎月東京でスペイン語交流会も運営。スペイン旅行、滞在に関わるご相談は、何なりとお申し付けください。</p>
+          <p class="en">Also active as a photographer for family and portrait shoots. Runs Barcelona sightseeing and gourmet tours. Since 2019, organizes monthly Spanish language exchange events in Tokyo (including online during COVID). Feel free to reach out for any questions about travel or living in Spain.</p>
+          
         </div>
       </div>
     </div>
@@ -679,6 +673,156 @@
     </div>
   </section>
 
+  <!-- PLANS -->
+  <section id="plans" style="background:var(--off-white); border-top:1px solid var(--border-light); padding-block:clamp(4rem,7vw,6rem);">
+    <div class="wrap">
+      <div class="fu" style="margin-bottom:3.5rem;">
+        <p class="sec-label muted">Plans & Pricing</p>
+        <span class="sec-rule"></span>
+        <h2 class="sec-h2 ja">ご利用プラン</h2>
+        <h2 class="sec-h2-en en">Our Plans</h2>
+        <p class="sec-lead light ja" style="max-width:620px;">目的・予算・期間に合わせて以下のようなプランをご用意しています。語学留学やサッカー、パデル留学など柔軟なプランニングが可能です。まずはお気軽にご相談ください。</p>
+        <p class="sec-lead light en" style="max-width:620px;">We offer flexible plans tailored to your goals, budget, and timeline — from language study to soccer and padel programs. Feel free to reach out for a consultation.</p>
+      </div>
+
+      <div class="plans-grid" style="display:grid; grid-template-columns:repeat(2, 1fr); gap:1.5px; border:1px solid var(--border-light);">
+
+
+        <!-- Plan 01 -->
+        <div class="fu" style="background:#fff; padding:2.25rem 2rem; position:relative; overflow:hidden; transition:box-shadow 0.3s;">
+          <div style="font-family:var(--font-serif-en); font-size:2.5rem; font-weight:300; color:rgba(201,168,76,0.15); line-height:1; margin-bottom:1rem; user-select:none;">01</div>
+          <p style="font-family:var(--font-sans); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Life Experience</p>
+          <h3 class="ja" style="font-family:var(--font-serif-ja); font-size:1.15rem; font-weight:500; color:var(--text-dark); margin-bottom:0.3rem;">バルセロナ1週間<br />生活体験プラン</h3>
+          <h3 class="en" style="font-family:var(--font-serif-en); font-style:italic; font-size:1.1rem; color:var(--text-dark); margin-bottom:0.3rem;">Barcelona 1-Week<br />Life Experience</h3>
+          <p style="font-family:var(--font-serif-en); font-style:italic; font-size:0.88rem; color:var(--gold); margin-bottom:1.25rem;">「観光じゃなく"暮らす"を体験」</p>
+          <div style="width:32px; height:1px; background:var(--gold); margin-bottom:1.25rem;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.55rem;">
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">事前Zoom相談（30分）</span><span class="en">Pre-departure Zoom consultation (30 min)</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">生活ガイドPDF</span><span class="en">Life guide PDF</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">おすすめエリア紹介</span><span class="en">Recommended area introduction</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">LINEサポート（滞在中）</span><span class="en">LINE support during stay</span>
+            </li>
+          </ul>
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:0.75rem; margin-top:1.75rem; padding:0.7rem 1.5rem; border:1px solid var(--gold); font-family:var(--font-sans); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:background 0.25s, color 0.25s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">
+            <span class="ja">相談する</span><span class="en">Enquire</span> →
+          </a>
+        </div>
+
+        <!-- Plan 02 -->
+        <div class="fu" style="background:#fff; padding:2.25rem 2rem; position:relative; overflow:hidden; transition:box-shadow 0.3s;">
+          <div style="font-family:var(--font-serif-en); font-size:2.5rem; font-weight:300; color:rgba(201,168,76,0.15); line-height:1; margin-bottom:1rem; user-select:none;">02</div>
+          <p style="font-family:var(--font-sans); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Scouting Plan</p>
+          <h3 class="ja" style="font-family:var(--font-serif-ja); font-size:1.15rem; font-weight:500; color:var(--text-dark); margin-bottom:0.3rem;">失敗しない留学・<br />ワーホリ下見プラン</h3>
+          <h3 class="en" style="font-family:var(--font-serif-en); font-style:italic; font-size:1.1rem; color:var(--text-dark); margin-bottom:0.3rem;">Study Abroad<br />Scouting Plan</h3>
+          <p style="font-family:var(--font-serif-en); font-style:italic; font-size:0.88rem; color:var(--gold); margin-bottom:1.25rem;">「来る前に全部わかる」</p>
+          <div style="width:32px; height:1px; background:var(--gold); margin-bottom:1.25rem;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.55rem;">
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">空港送迎</span><span class="en">Airport pickup & drop-off</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">エリア案内（半日）</span><span class="en">Area tour (half day)</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">学校見学</span><span class="en">School visit</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">生活費リアル解説</span><span class="en">Real cost of living breakdown</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-light);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">LINEサポート</span><span class="en">LINE support</span>
+            </li>
+          </ul>
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:0.75rem; margin-top:1.75rem; padding:0.7rem 1.5rem; border:1px solid var(--gold); font-family:var(--font-sans); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:background 0.25s, color 0.25s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">
+            <span class="ja">相談する</span><span class="en">Enquire</span> →
+          </a>
+        </div>
+
+        <!-- Plan 03 -->
+        <div class="fu" style="background:var(--card); padding:2.25rem 2rem; position:relative; overflow:hidden; border-top:3px solid var(--gold);">
+          <div style="position:absolute; top:1rem; right:1rem; font-family:var(--font-sans); font-size:0.55rem; letter-spacing:0.15em; text-transform:uppercase; background:var(--gold); color:var(--black); padding:0.25rem 0.65rem;">POPULAR</div>
+          <div style="font-family:var(--font-serif-en); font-size:2.5rem; font-weight:300; color:rgba(201,168,76,0.2); line-height:1; margin-bottom:1rem; user-select:none;">03</div>
+          <p style="font-family:var(--font-sans); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Premium Support</p>
+          <h3 class="ja" style="font-family:var(--font-serif-ja); font-size:1.15rem; font-weight:500; color:var(--cream); margin-bottom:0.3rem;">プレミアム現地<br />フルサポート</h3>
+          <h3 class="en" style="font-family:var(--font-serif-en); font-style:italic; font-size:1.1rem; color:var(--cream); margin-bottom:0.3rem;">Premium Full<br />Local Support</h3>
+          <p style="font-family:var(--font-serif-en); font-style:italic; font-size:0.88rem; color:var(--gold); margin-bottom:1.25rem;">「何があっても大丈夫な状態を作る」</p>
+          <div style="width:32px; height:1px; background:var(--gold); margin-bottom:1.25rem;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.55rem;">
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">空港送迎</span><span class="en">Airport pickup & drop-off</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">初日同行</span><span class="en">First-day accompaniment</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">住居サポート</span><span class="en">Housing support</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">24時間対応</span><span class="en">24h support</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">通訳対応（軽度）</span><span class="en">Basic interpretation</span>
+            </li>
+          </ul>
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:0.75rem; margin-top:1.75rem; padding:0.7rem 1.5rem; background:var(--gold); border:1px solid var(--gold); font-family:var(--font-sans); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--black); text-decoration:none; transition:opacity 0.25s;" onmouseover="this.style.opacity='0.85'" onmouseout="this.style.opacity='1'">
+            <span class="ja">相談する</span><span class="en">Enquire</span> →
+          </a>
+        </div>
+
+        <!-- Plan 04 -->
+        <div class="fu" style="background:var(--surface); padding:2.25rem 2rem; position:relative; overflow:hidden;">
+          <div style="font-family:var(--font-serif-en); font-size:2.5rem; font-weight:300; color:rgba(201,168,76,0.2); line-height:1; margin-bottom:1rem; user-select:none;">04</div>
+          <p style="font-family:var(--font-sans); font-size:0.6rem; letter-spacing:0.22em; text-transform:uppercase; color:var(--gold); margin-bottom:0.6rem;">Business Travel</p>
+          <h3 class="ja" style="font-family:var(--font-serif-ja); font-size:1.15rem; font-weight:500; color:var(--cream); margin-bottom:0.3rem;">ビジネス渡航サポート<br />（通訳込み）</h3>
+          <h3 class="en" style="font-family:var(--font-serif-en); font-style:italic; font-size:1.1rem; color:var(--cream); margin-bottom:0.3rem;">Business Travel<br />Support + Interpretation</h3>
+          <p style="font-family:var(--font-serif-en); font-style:italic; font-size:0.88rem; color:var(--gold); margin-bottom:1.25rem;">「出張を成功させる現地パートナー」</p>
+          <div style="width:32px; height:1px; background:var(--gold); margin-bottom:1.25rem;"></div>
+          <ul style="list-style:none; display:flex; flex-direction:column; gap:0.55rem;">
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">通訳</span><span class="en">Interpretation</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">スケジュール管理</span><span class="en">Schedule management</span>
+            </li>
+            <li style="display:flex; gap:0.6rem; font-size:0.84rem; color:var(--muted-dark);">
+              <span style="color:var(--gold); flex-shrink:0;">✦</span>
+              <span class="ja">移動同行</span><span class="en">Travel accompaniment</span>
+            </li>
+          </ul>
+          <p style="font-size:0.84rem; color:var(--muted-dark); line-height:1.85; margin-top:1.25rem;" class="ja">すぐに渡航できない場合はこちらでの現地調査も可能です。<br />まずはお気軽にご相談ください。</p>
+          <p style="font-size:0.84rem; color:var(--muted-dark); line-height:1.85; margin-top:1.25rem;" class="en">If you're not yet able to travel, we can conduct on-site research on your behalf.<br />Feel free to reach out anytime.</p>
+          <a href="#contact" style="display:inline-flex; align-items:center; gap:0.75rem; margin-top:1.75rem; padding:0.7rem 1.5rem; border:1px solid var(--gold); font-family:var(--font-sans); font-size:0.65rem; letter-spacing:0.18em; text-transform:uppercase; color:var(--gold); text-decoration:none; transition:background 0.25s, color 0.25s;" onmouseover="this.style.background='var(--gold)';this.style.color='var(--black)'" onmouseout="this.style.background='transparent';this.style.color='var(--gold)'">
+            <span class="ja">相談する</span><span class="en">Enquire</span> →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- FAQ -->
   <section id="faq">
     <div class="wrap">
@@ -753,6 +897,54 @@
           <div class="faq-a"><div class="faq-a-inner">
             <span class="ja">現地コーディネーターが常に連絡を取れる体制を整えています。体調不良・紛失・トラブルなど、滞在中の緊急事態にも迅速に対応いたします。</span>
             <span class="en">Our local coordinator is always reachable. From illness to lost documents, we respond promptly to any emergency during your stay.</span>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">スペイン語初心者でも大丈夫でしょうか。</span>
+            <span class="en">Is it okay if I'm a Spanish beginner?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">渡航前から勉強しておくことに越したことはありませんが、語学学校やマンツーマン指導含め、学習環境は整っていますので問題ありません。</span>
+            <span class="en">While studying before departure is always beneficial, we have full language learning support including schools and one-on-one instruction — so beginners are very welcome.</span>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">ビザ申請からサポートいただけるのでしょうか。</span>
+            <span class="en">Can you support us from the visa application stage?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">はい、もちろん可能です。必要に応じて日本側でのビザ申請から丁寧にサポートいたします。</span>
+            <span class="en">Yes, absolutely. We provide careful support from the visa application process in Japan as needed.</span>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">何ヶ月から長期となるのでしょうか。</span>
+            <span class="en">From how many months is it considered long-term?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">3ヶ月はシェンゲン協定（観光ビザ）で入国できるので不要ですが、3ヶ月以上の滞在はビザの取得が必須となります。</span>
+            <span class="en">Up to 3 months can be covered by the Schengen Agreement (tourist entry), but stays longer than 3 months require obtaining a visa.</span>
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q">
+            <span class="ja">短期留学で行きたいのですが、公式戦の出場はできますか？</span>
+            <span class="en">Can I play in official matches on a short-term stay?</span>
+            <span class="faq-icon"></span>
+          </button>
+          <div class="faq-a"><div class="faq-a-inner">
+            <span class="ja">サッカーの場合は長期滞在として現地の身分証がないと公式戦（リーグ戦）に出場することはできません。（満18歳以上）パデルの場合は短期でも公式戦に出られます。</span>
+            <span class="en">For soccer, a local ID through long-term residency is required to participate in official league matches (18+). For padel, you can compete in official matches even on a short-term stay.</span>
           </div></div>
         </div>
       </div>
@@ -862,6 +1054,7 @@
             <h4 class="ja">会社情報</h4><h4 class="en">Company</h4>
             <ul>
               <li><a href="#profile" class="ja">代表紹介</a><a href="#profile" class="en">About</a></li>
+              <li><a href="#plans" class="ja">ご利用プラン</a><a href="#plans" class="en">Plans</a></li>
               <li><a href="#faq" class="ja">よくある質問</a><a href="#faq" class="en">FAQ</a></li>
               <li><a href="#contact" class="ja">お問い合わせ</a><a href="#contact" class="en">Contact</a></li>
             </ul>
